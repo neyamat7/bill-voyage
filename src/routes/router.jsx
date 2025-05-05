@@ -25,6 +25,20 @@ export const router = createBrowserRouter([
         path: "register",
         Component: SignUp,
       },
+      // {
+      //   path: "bills",
+      //   element: (
+      //     <PrivateRoutes>
+      //       <Bills></Bills>
+      //     </PrivateRoutes>
+      //   ),
+      // },
+      {
+        path: "bills",
+        loader: () => fetch("/bills.json"),
+        element: <Bills></Bills>,
+      },
+      
     ],
   },
 ]);
