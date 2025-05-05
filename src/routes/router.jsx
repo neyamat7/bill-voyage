@@ -46,7 +46,10 @@ export const router = createBrowserRouter([
       //     </PrivateRoutes>
       //   ),
       // },
-     
+      {
+        path: "profile",
+        element: <Profile></Profile>,
+      },
       {
         path: "details/:id",
         loader: async ({ params }) => {
