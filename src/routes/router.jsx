@@ -38,7 +38,25 @@ export const router = createBrowserRouter([
         loader: () => fetch("/bills.json"),
         element: <Bills></Bills>,
       },
-      
+      // {
+      //   path: "profile",
+      //   element: (
+      //     <PrivateRoutes>
+      //       <Profile></Profile>
+      //     </PrivateRoutes>
+      //   ),
+      // },
+     
+      {
+        path: "details/:id",
+        loader: async ({ params }) => {
+          const response = await fetch("/bills.json");
+          const billsData = await response.json();
+          const singleBill = billsData.find((b) => b.id == params.id);
+          return singleBill;
+        },
+        element: <Details></Details>,
+      },
     ],
   },
 ]);
