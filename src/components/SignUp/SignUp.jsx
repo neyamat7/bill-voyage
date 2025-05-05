@@ -1,18 +1,41 @@
 // import { sendEmailVerification } from "firebase/auth";
 // import { auth } from "../../firebase";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import useAuth from "../../context/useAuth";
-import { updateProfile } from "firebase/auth";
+import { MdOutlineErrorOutline } from "react-icons/md";
+import { FcGoogle } from "react-icons/fc";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const [error, setError] = useState("");
+  const location = useLocation();
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [photoUrl, setPhotoUrl] = useState("");
+
   const [showPass, setShowPass] = useState(false);
   const [focused, setFocused] = useState(false);
 
-  const { createUser, setUser, updateUser } = useAuth();
+  const [error, setError] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [passwordError, setPasswordError] = useState(" ");
+  const [emailError, setEmailError] = useState("");
+  const [photoError, setPhotoError] = useState("");
+
+  const { createUser, setUser, updateUser, googleSignIn } = useAuth();
+
+  function handleGoogleSignIn() {
+    googleSignIn()
+      .then((result) => {
+        console.log(result.user);
+        navigate(location?.state || "/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   function handleFocus(e) {
     if (e.target.value.length > 0) {
@@ -25,65 +48,86 @@ const SignUp = () => {
   function handleRegister(e) {
     e.preventDefault();
 
-    const email = e.target.email.value;
-    const password = e.target.password.value;
     const terms = e.target.terms.checked;
-    const userName = e.target.name.value;
-    const photo = e.target.photo.value;
-    // const charLengthCheck = /^.{6,}$/;
-    // const uppercaseCheck = /[A-Z]/;
-    // const lowercaseCheck = /[a-z]/;
-    // const checkOtherChar = /[^\w\s]/;
-    // const checkDigit = /[0-9]/;
-    // const checkWhitespace = /\s/;
 
-    console.log(email, password);
+    const charLengthCheck = /^.{6,}$/;
+    const uppercaseCheck = /[A-Z]/;
+    const lowercaseCheck = /[a-z]/;
 
     setError("");
+    setNameError("");
+    setEmailError("");
+    setPasswordError("");
+    setPhotoError("");
 
-    if (!email || !password) {
-      setError("please provide your email and password");
+    if (!userName) {
+      setNameError(
+        <span className="flex items-center gap-1 text-red-500">
+          <MdOutlineErrorOutline className="mt-0.5" />
+          Required!
+        </span>
+      );
+      return;
+    }
+    if (!email) {
+      setEmailError(
+        <span className="flex items-center gap-1 text-red-500">
+          <MdOutlineErrorOutline className="mt-0.5" />
+          Please provide your email!
+        </span>
+      );
+      return;
+    } else if (!password) {
+      setPasswordError(
+        <span className="flex items-center gap-1 text-red-500">
+          <MdOutlineErrorOutline className="mt-0.5" />
+          Please provide your password!
+        </span>
+      );
+      return;
+    } else if (!charLengthCheck.test(password)) {
+      setPasswordError(
+        <span className="flex items-center gap-1 text-red-500">
+          <MdOutlineErrorOutline className="mt-0.5" />
+          Password must be at least 6 character
+        </span>
+      );
+      return;
+    } else if (!uppercaseCheck.test(password)) {
+      setPasswordError(
+        <span className="flex items-center gap-1 text-red-500">
+          <MdOutlineErrorOutline className="mt-0.5" />
+          At least one upperCase letter required!
+        </span>
+      );
+      return;
+    } else if (!lowercaseCheck.test(password)) {
+      setPasswordError(
+        <span className="flex items-center gap-1 text-red-500">
+          <MdOutlineErrorOutline className="mt-0.5" />
+          At least one lowercase letter required!
+        </span>
+      );
+      return;
+    } else if (!photoUrl) {
+      setPhotoError(
+        <span className="flex items-center gap-1 text-red-500">
+          <MdOutlineErrorOutline className="mt-0.5" />
+          Please provide photo url
+        </span>
+      );
       return;
     } else if (!terms) {
       setError("please accept terms and conditions.");
       return;
     }
 
-    // if (!charLengthCheck.test(password)) {
-    //   alert("password must be at least 6 char");
-    //   return;
-    // } else if (!uppercaseCheck.test(password)) {
-    //   alert("at least one upperCase letter");
-    //   return;
-    // } else if (!lowercaseCheck.test(password)) {
-    //   alert("at least one lowercase letter");
-    //   return;
-    // } else if (!checkOtherChar.test(password)) {
-    //   alert("at least one special char");
-    //   return;
-    // } else if (!checkDigit.test(password)) {
-    //   alert("at least one digit");
-    //   return;
-    // } else if (checkWhitespace.test(password)) {
-    //   alert("password contains whitespace, that is not allowed");
-    //   return;
-    // }
-
     createUser(email, password)
       .then((res) => {
-        // console.log(password);
-        // console.log(res.user);
-        // sendEmailVerification(auth.currentUser);
-        // alert("send verification email, plz verify!");
-
         const user = res.user;
-        // set name and photo url
-        // updateProfile(user, {
-        //   displayName
-        // });
-        updateUser({ displayName: userName, photoURL: photo })
+        updateUser({ displayName: userName, photoURL: photoUrl })
           .then(() => {
-            setUser({ ...user, displayName: userName, photoURL: photo });
+            setUser({ ...user, displayName: userName, photoURL: photoUrl });
           })
           .catch((error) => {
             console.log(error);
@@ -91,6 +135,7 @@ const SignUp = () => {
           });
 
         navigate("/login");
+        navigate(location?.state || "/");
       })
       .catch((err) => {
         console.log(err);
@@ -113,8 +158,14 @@ const SignUp = () => {
             name="name"
             type="text"
             id="name"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            value={userName}
+            onChange={(e) => {
+              setUserName(e.target.value);
+              e.target.value.length > 0 && setNameError("");
+            }}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight "
           />
+          <p className="mt-0.5">{nameError}</p>
         </div>
 
         <div className="mb-4">
@@ -128,8 +179,14 @@ const SignUp = () => {
             name="email"
             type="email"
             id="email"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              e.target.value.length > 0 && setEmailError("");
+            }}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"
           />
+          <p className="mt-0.5">{emailError}</p>
         </div>
         <div className="mb-4 relative">
           <label
@@ -140,10 +197,15 @@ const SignUp = () => {
           </label>
           <input
             name="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              handleFocus(e);
+              setPasswordError("");
+            }}
             type={showPass ? "text" : "password"}
             id="password"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            onChange={handleFocus}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight  "
           />
           <span
             onClick={() => setShowPass((prev) => !prev)}
@@ -153,6 +215,8 @@ const SignUp = () => {
           >
             {showPass ? <FaEyeSlash /> : <FaEye />}
           </span>
+
+          <p className="mt-0.5">{passwordError}</p>
         </div>
 
         <div className="mb-4">
@@ -166,8 +230,14 @@ const SignUp = () => {
             name="photo"
             type="text"
             id="photo"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            value={photoUrl}
+            onChange={(e) => {
+              setPhotoUrl(e.target.value);
+              setPhotoError("");
+            }}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"
           />
+          <p className="mt-0.5">{photoError}</p>
         </div>
         <div className="flex items-center mb-4">
           <input
@@ -175,6 +245,9 @@ const SignUp = () => {
             type="checkbox"
             id="terms"
             className="mr-2 leading-tight"
+            onChange={(e) => {
+              e.target.checked && setError("");
+            }}
           />
           <label htmlFor="terms" className="text-sm text-gray-700">
             Accept terms and conditions
@@ -198,6 +271,12 @@ const SignUp = () => {
           </button>
         </div>
       </form>
+      <button
+        onClick={handleGoogleSignIn}
+        className="bg-slate-400 hover:bg-red-700 text-white font-bold py-2 px-4 rounded  flex items-center gap-2 w-fit mx-auto mt-10"
+      >
+        <FcGoogle size={24} /> Sign in with Google
+      </button>
     </div>
   );
 };

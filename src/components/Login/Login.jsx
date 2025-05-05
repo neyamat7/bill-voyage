@@ -1,5 +1,3 @@
-import { sendPasswordResetEmail } from "firebase/auth";
-import { auth } from "../../firebase";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
@@ -7,8 +5,7 @@ import useAuth from "../../context/useAuth";
 import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
-  const { user, signInUser, signOutUser, githubSignIn, googleSignIn } =
-    useAuth();
+  const { signInUser, googleSignIn } = useAuth();
   const location = useLocation();
 
   const navigate = useNavigate();
