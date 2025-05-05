@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { auth } from "../firebase";
@@ -42,6 +43,21 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  const updateUser = async (updatedData) => {
+    console.log(updatedData);
+    console.log(user);
+    if (!auth.currentUser) {
+      throw new Error("No authenticated user found");
+    }
+
+    try {
+      await updateProfile(auth.currentUser, updatedData);
+      setUser({ ...auth.currentUser });
+    } catch (error) {
+      console.error("Profile update failed:", error);
+    }
+  };
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -54,12 +70,14 @@ const AuthProvider = ({ children }) => {
 
   const userInfo = {
     user,
+    setUser,
     createUser,
     signInUser,
     signOutUser,
     loading,
     githubSignIn,
     googleSignIn,
+    updateUser,
   };
 
   return (

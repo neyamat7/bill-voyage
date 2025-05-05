@@ -1,11 +1,10 @@
 import React from "react";
 import { MdOutlineAttachEmail } from "react-icons/md";
+import useAuth from "../../context/useAuth";
 
-const Profile = ({
-  name = "Taylor Kim",
-  email = "taylor.kim@example.com",
-  imageUrl = "/logo.jpg",
-}) => {
+const Profile = () => {
+  const { user } = useAuth();
+
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-80px)] bg-gray-100">
       <div className="relative w-md p-14 rounded-2xl bg-gray-100 shadow-lg hover:shadow-xl flex flex-col items-center transition-all duration-300 ease-in-out transform hover:-translate-y-1">
@@ -17,7 +16,7 @@ const Profile = ({
         {/* Profile image container */}
         <div className="relative w-32 h-32 rounded-full mb-6 bg-gray-100 shadow-inner flex justify-center items-center overflow-hidden">
           <img
-            src={imageUrl}
+            src={user?.photoURL}
             alt={`${name}'s profile`}
             className="w-28 h-28 rounded-full object-cover border-4 border-gray-100 shadow"
           />
@@ -26,7 +25,7 @@ const Profile = ({
         {/* User name */}
         <div className="relative mb-2.5">
           <h2 className="text-lg font-semibold text-gray-800 text-center tracking-wide">
-            {name}
+            {user?.displayName}
           </h2>
           <div className="absolute w-8 h-0.5 bg-indigo-500 -bottom-1 left-1/2 transform -translate-x-1/2"></div>
         </div>
@@ -37,7 +36,7 @@ const Profile = ({
             <span>
               <MdOutlineAttachEmail size={20} color="blue" />
             </span>
-            <span className="mb-1 text-lg">{email}</span>
+            <span className="mb-1 text-lg">{user?.email}</span>
           </p>
         </div>
       </div>

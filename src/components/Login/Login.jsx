@@ -4,6 +4,7 @@ import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../../context/useAuth";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const { user, signInUser, signOutUser, githubSignIn, googleSignIn } =
@@ -25,15 +26,15 @@ const Login = () => {
     }
   }
 
-  function handleSignOut() {
-    signOutUser()
-      .then(() => {
-        console.log("User signed out");
-      })
-      .catch((error) => {
-        console.log("Sign out error:", error);
-      });
-  }
+  // function handleSignOut() {
+  //   signOutUser()
+  //     .then(() => {
+  //       console.log("User signed out");
+  //     })
+  //     .catch((error) => {
+  //       console.log("Sign out error:", error);
+  //     });
+  // }
 
   function handleSignInWithPassword() {
     signInUser(email, password)
@@ -47,15 +48,15 @@ const Login = () => {
       });
   }
 
-  function handleForgetPassword() {
-    sendPasswordResetEmail(auth, email)
-      .then(() => {
-        alert("password reset email has been sent, plz check your email");
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }
+  // function handleForgetPassword() {
+  //   sendPasswordResetEmail(auth, email)
+  //     .then(() => {
+  //       alert("password reset email has been sent, plz check your email");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.message);
+  //     });
+  // }
 
   function handleGoogleSignIn() {
     googleSignIn()
@@ -68,20 +69,21 @@ const Login = () => {
       });
   }
 
-  function handleGithubLogin() {
-    githubSignIn()
-      .then((result) => {
-        console.log(result.user);
-        navigate(location?.state || "/");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+  // function handleGithubLogin() {
+  //   githubSignIn()
+  //     .then((result) => {
+  //       console.log(result.user);
+  //       navigate(location?.state || "/");
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
 
   return (
     <div className="flex flex-col items-center justify-center bg-gray-100 h-screen">
       <form className="bg-white shadow-md px-8 pt-6 pb-8 mb-4 w-[400px] rounded-lg">
+        <h1 className="text-3xl text-center font-bold mb-5">Login</h1>
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -130,7 +132,7 @@ const Login = () => {
           </div>
           <div className="flex items-center justify-end">
             <a
-              onClick={handleForgetPassword}
+              // onClick={handleForgetPassword}
               className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
               href="#"
             >
@@ -139,22 +141,13 @@ const Login = () => {
           </div>
         </div>
 
-        {user ? (
-          <button
-            onClick={handleSignOut}
-            className="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mt-2"
-          >
-            Sign Out
-          </button>
-        ) : (
-          <button
-            onClick={handleSignInWithPassword}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
-          >
-            Sign In
-          </button>
-        )}
+        <button
+          onClick={handleSignInWithPassword}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="button"
+        >
+          Sign In
+        </button>
         <p className="mt-3">
           Don't Have an Account?{" "}
           <Link to="/register" className="text-blue-600 font-bold">
@@ -163,41 +156,21 @@ const Login = () => {
         </p>
       </form>
 
-      <div className="mt-4">
+      <div>
         <button
           onClick={handleGoogleSignIn}
-          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+          className="bg-slate-400 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full flex items-center gap-2"
         >
-          Sign in with Google
+          <FcGoogle size={24} /> Sign in with Google
         </button>
 
-        <button
+        {/* <button
           onClick={handleGithubLogin}
           className="bg-gray-500 mt-5 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
         >
           Sign in with Github
-        </button>
+        </button> */}
       </div>
-
-      {user && (
-        <div className="relative bg-white/20 backdrop-blur-md rounded-lg p-6 border border-white/30 shadow-xl mt-8">
-          <div>
-            <p className="text-lg font-semibold text-gray-800 mb-2">
-              {user.displayName}
-            </p>
-            <p className="text-sm text-gray-600">{user.email}</p>
-            {user.photoURL && (
-              <div className="mt-4 rounded-full overflow-hidden w-20 h-20">
-                <img
-                  src={user.photoURL}
-                  alt="User Profile"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 };

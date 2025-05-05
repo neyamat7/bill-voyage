@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import useAuth from "../../context/useAuth";
+import { updateProfile } from "firebase/auth";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const SignUp = () => {
   const [showPass, setShowPass] = useState(false);
   const [focused, setFocused] = useState(false);
 
-  const { createUser } = useAuth();
+  const { createUser, setUser, updateUser } = useAuth();
 
   function handleFocus(e) {
     if (e.target.value.length > 0) {
@@ -27,12 +28,16 @@ const SignUp = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const terms = e.target.terms.checked;
+    const userName = e.target.name.value;
+    const photo = e.target.photo.value;
     // const charLengthCheck = /^.{6,}$/;
     // const uppercaseCheck = /[A-Z]/;
     // const lowercaseCheck = /[a-z]/;
     // const checkOtherChar = /[^\w\s]/;
     // const checkDigit = /[0-9]/;
     // const checkWhitespace = /\s/;
+
+    console.log(email, password);
 
     setError("");
 
@@ -66,10 +71,25 @@ const SignUp = () => {
 
     createUser(email, password)
       .then((res) => {
-        console.log(password);
-        console.log(res.user);
+        // console.log(password);
+        // console.log(res.user);
         // sendEmailVerification(auth.currentUser);
-        alert("send verification email, plz verify!");
+        // alert("send verification email, plz verify!");
+
+        const user = res.user;
+        // set name and photo url
+        // updateProfile(user, {
+        //   displayName
+        // });
+        updateUser({ displayName: userName, photoURL: photo })
+          .then(() => {
+            setUser({ ...user });
+          })
+          .catch((error) => {
+            console.log(error);
+            console.log("error profile update");
+          });
+
         navigate("/login");
       })
       .catch((err) => {
@@ -84,15 +104,15 @@ const SignUp = () => {
       <form onSubmit={handleRegister}>
         <div className="mb-4">
           <label
-            htmlFor="email"
+            htmlFor="name"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
             Name:
           </label>
           <input
-            name="email"
-            type="email"
-            id="email"
+            name="name"
+            type="text"
+            id="name"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
@@ -137,15 +157,15 @@ const SignUp = () => {
 
         <div className="mb-4">
           <label
-            htmlFor="email"
+            htmlFor="photo"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
             Photo URL
           </label>
           <input
-            name="email"
-            type="email"
-            id="email"
+            name="photo"
+            type="text"
+            id="photo"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
@@ -171,7 +191,7 @@ const SignUp = () => {
           </button>
 
           <button>
-            Already Have an Account?{" "}
+            Already Have an Account?
             <Link className="text-blue-600 font-bold" to="/login">
               Login
             </Link>
