@@ -28,20 +28,6 @@ const SignUp = () => {
     googleSignIn()
       .then((result) => {
         console.log(result.user);
-        // const loggedInUser = result.user;
-        // const userEmail = loggedInUser?.providerData[0].email;
-
-        // updateUser({ email: userEmail })
-        //   .then(() => {
-        //     setUser({
-        //       ...loggedInUser,
-        //       email: userEmail,
-        //     });
-        //   })
-        //   .catch((error) => {
-        //     console.log(error);
-        //     console.log("error profile update");
-        //   });
 
         navigate(location?.state || "/");
       })

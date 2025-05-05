@@ -12,6 +12,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
+  const [error, setError] = useState("");
 
   const [focused, setFocused] = useState(false);
 
@@ -32,17 +33,19 @@ const Login = () => {
       })
       .catch((err) => {
         console.log(err.message);
+        setError(err?.message);
       });
   }
 
   function handleGoogleSignIn() {
     googleSignIn()
       .then((result) => {
-        console.log(result.user); 
+        console.log(result.user);
         navigate(location?.state || "/");
       })
       .catch((error) => {
         console.log(error);
+        setError(error?.message);
       });
   }
 
@@ -106,7 +109,7 @@ const Login = () => {
             </a>
           </div>
         </div>
-
+        <p className="text-red-500 font-semibold mb-2">{error}</p>
         <button
           onClick={handleSignInWithPassword}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
