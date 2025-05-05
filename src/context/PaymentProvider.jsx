@@ -30,10 +30,17 @@ const PaymentProvider = ({ children }) => {
     setBalance(getBalance());
   };
 
+  const resetBalance = () => {
+    localStorage.setItem("balance", 10000);
+    setBalance(getBalance());
+    localStorage.setItem("paid", []);
+  };
+
   const payInfo = {
     balance,
     setPaidItem,
     getPaidItem,
+    resetBalance,
   };
 
   return (

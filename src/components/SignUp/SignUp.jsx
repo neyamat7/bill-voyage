@@ -1,5 +1,3 @@
-// import { sendEmailVerification } from "firebase/auth";
-// import { auth } from "../../firebase";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -30,6 +28,21 @@ const SignUp = () => {
     googleSignIn()
       .then((result) => {
         console.log(result.user);
+        // const loggedInUser = result.user;
+        // const userEmail = loggedInUser?.providerData[0].email;
+
+        // updateUser({ email: userEmail })
+        //   .then(() => {
+        //     setUser({
+        //       ...loggedInUser,
+        //       email: userEmail,
+        //     });
+        //   })
+        //   .catch((error) => {
+        //     console.log(error);
+        //     console.log("error profile update");
+        //   });
+
         navigate(location?.state || "/");
       })
       .catch((error) => {

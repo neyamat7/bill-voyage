@@ -7,6 +7,8 @@ import { Link, Outlet } from "react-router";
 const Profile = () => {
   const { user, setUser, updateUser } = useAuth();
 
+  const userEmail = user.email || user.providerData[0].email;
+
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-80px)] bg-gray-100">
       <div className="relative w-md p-14 rounded-2xl bg-gray-100 shadow-lg hover:shadow-xl flex flex-col items-center transition-all duration-300 ease-in-out transform hover:-translate-y-1">
@@ -20,7 +22,7 @@ const Profile = () => {
           <div className="w-40 h-40 rounded-full overflow-hidden bg-gray-100 shadow-inner border border-gray-200">
             <img
               src={user?.photoURL}
-              alt={`${name}'s profile`}
+              alt={`user's profile`}
               className="w-full h-full object-cover"
             />
           </div>
@@ -46,7 +48,7 @@ const Profile = () => {
             <span>
               <MdOutlineAttachEmail size={20} color="blue" />
             </span>
-            <span className="mb-1 text-lg">{user?.email}</span>
+            <span className="mb-1 text-lg">{userEmail}</span>
           </p>
         </div>
         <div className="w-full">

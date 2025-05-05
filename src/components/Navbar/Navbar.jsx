@@ -4,14 +4,16 @@ import usePayment from "../../context/usePayment";
 import useAuth from "../../context/useAuth";
 
 const Navbar = () => {
-  const { balance } = usePayment();
+  const { balance, resetBalance } = usePayment();
   const [remainingBalance, setRemainingBalance] = useState(0);
   const { user, signOutUser } = useAuth();
+  const userEmail = user?.email || user?.providerData[0].email;
 
   function handleLogOut() {
     signOutUser()
       .then(() => {
         console.log("User signed out");
+        resetBalance();
       })
       .catch((error) => {
         console.log("Sign out error:", error);
@@ -64,7 +66,7 @@ const Navbar = () => {
               <li>
                 <div className="flex flex-col items-start gap-0">
                   <p className="text-lg">{user.displayName}</p>
-                  <p>{user.email}</p>
+                  <p>{userEmail}</p>
                 </div>
               </li>
               <li>

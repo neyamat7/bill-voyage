@@ -23,16 +23,6 @@ const Login = () => {
     }
   }
 
-  // function handleSignOut() {
-  //   signOutUser()
-  //     .then(() => {
-  //       console.log("User signed out");
-  //     })
-  //     .catch((error) => {
-  //       console.log("Sign out error:", error);
-  //     });
-  // }
-
   function handleSignInWithPassword() {
     signInUser(email, password)
       .then((res) => {
@@ -45,37 +35,16 @@ const Login = () => {
       });
   }
 
-  // function handleForgetPassword() {
-  //   sendPasswordResetEmail(auth, email)
-  //     .then(() => {
-  //       alert("password reset email has been sent, plz check your email");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.message);
-  //     });
-  // }
-
   function handleGoogleSignIn() {
     googleSignIn()
       .then((result) => {
-        console.log(result.user);
+        console.log(result.user); 
         navigate(location?.state || "/");
       })
       .catch((error) => {
         console.log(error);
       });
   }
-
-  // function handleGithubLogin() {
-  //   githubSignIn()
-  //     .then((result) => {
-  //       console.log(result.user);
-  //       navigate(location?.state || "/");
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
 
   return (
     <div className="flex flex-col items-center justify-center bg-gray-100 h-screen">
