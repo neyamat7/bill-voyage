@@ -2,29 +2,10 @@ import React, { useState } from "react";
 import { MdOutlineAttachEmail } from "react-icons/md";
 import useAuth from "../../context/useAuth";
 import { FaUserEdit } from "react-icons/fa";
-import { Turtle } from "lucide-react";
+import { Link, Outlet } from "react-router";
 
 const Profile = () => {
   const { user, setUser, updateUser } = useAuth();
-  const [isEdit, setIsEdit] = useState(false);
-  const [userName, setUserName] = useState(user.displayName);
-  const [photoUrl, setPhotoUrl] = useState(user.photoURL);
-  console.log(user);
-
-  function handleProfileUpdate(e) {
-    e.preventDefault();
-
-    updateUser({ displayName: userName, photoURL: photoUrl })
-      .then(() => {
-        setUser({ ...user, displayName: userName, photoURL: photoUrl });
-        console.log("profiile updated successfully!");
-        setIsEdit(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        console.log("error profile update");
-      });
-  }
 
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-80px)] bg-gray-100">
@@ -45,12 +26,12 @@ const Profile = () => {
           </div>
 
           {/* Edit icon - positioned absolutely relative to the main container */}
-          <div
-            onClick={() => setIsEdit(true)}
+          <Link
+            to="/profile/update-profile"
             className="absolute bottom-2 right-2 bg-white rounded-full p-1 shadow-md cursor-pointer hover:bg-gray-100 transition-colors"
           >
             <FaUserEdit size={20} className="text-blue-500" />
-          </div>
+          </Link>
         </div>
         {/* User name */}
         <div className="relative mb-2.5">
@@ -68,53 +49,8 @@ const Profile = () => {
             <span className="mb-1 text-lg">{user?.email}</span>
           </p>
         </div>
-
-        <div className={`w-full mt-10 ${isEdit ? "block" : "hidden"}`}>
-          <form onSubmit={handleProfileUpdate}>
-            {/* Display name input */}
-            <div className="mb-4">
-              <label
-                htmlFor="displayName"
-                className="block text-gray-700 text-sm font-bold mb-2"
-              >
-                Name:
-              </label>
-              <input
-                type="text"
-                id="displayName"
-                name="displayName"
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
-                className="shadow border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight"
-              />
-            </div>
-
-            {/* Photo URL input */}
-            <div className="mb-4">
-              <label
-                htmlFor="photoURL"
-                className="block text-gray-700 text-sm font-bold mb-2"
-              >
-                Photo URL:
-              </label>
-              <input
-                type="text"
-                id="photoURL"
-                name="photoURL"
-                value={photoUrl}
-                onChange={(e) => setPhotoUrl(e.target.value)}
-                className="shadow border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight"
-              />
-            </div>
-
-            {/* Save button */}
-            <button
-              type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            >
-              Save Changes
-            </button>
-          </form>
+        <div className="w-full">
+          <Outlet></Outlet>
         </div>
       </div>
     </div>
