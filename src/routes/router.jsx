@@ -25,31 +25,32 @@ export const router = createBrowserRouter([
         path: "register",
         Component: SignUp,
       },
-      // {
-      //   path: "bills",
-      //   element: (
-      //     <PrivateRoutes>
-      //       <Bills></Bills>
-      //     </PrivateRoutes>
-      //   ),
-      // },
       {
         path: "bills",
         loader: () => fetch("/bills.json"),
-        element: <Bills></Bills>,
+        element: (
+          <PrivateRoutes>
+            <Bills></Bills>
+          </PrivateRoutes>
+        ),
       },
       // {
-      //   path: "profile",
-      //   element: (
-      //     <PrivateRoutes>
-      //       <Profile></Profile>
-      //     </PrivateRoutes>
-      //   ),
+      //   path: "bills",
+      //   loader: () => fetch("/bills.json"),
+      //   element: <Bills></Bills>,
       // },
       {
         path: "profile",
-        element: <Profile></Profile>,
+        element: (
+          <PrivateRoutes>
+            <Profile></Profile>
+          </PrivateRoutes>
+        ),
       },
+      // {
+      //   path: "profile",
+      //   element: <Profile></Profile>,
+      // },
       {
         path: "details/:id",
         loader: async ({ params }) => {
