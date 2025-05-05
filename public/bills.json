@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "bill_type": "electricity",
+    "icon": "https://i.postimg.cc/D0p8t7NY/9746847.png",
+    "organization": "DESCO",
+    "amount": 1890,
+    "due_date": "2025-03-22T06:57:58.110Z",
+    "organization_logo": "https://i.postimg.cc/PrR960S3/unnamed.png"
+  },
+  {
+    "id": 2,
+    "bill_type": "gas",
+    "icon": "https://i.postimg.cc/5NZtvKWv/12816526.png",
+    "organization": "Titas",
+    "amount": 1488,
+    "due_date": "2025-03-28T06:57:58.110Z",
+    "organization_logo": "https://i.postimg.cc/CLQsT0T8/titash-gas-logo-png-seeklogo-333374.png"
+  },
+  {
+    "id": 3,
+    "bill_type": "water",
+    "icon": "https://i.postimg.cc/9M8mfJBD/3105807.png",
+    "organization": "WASA",
+    "amount": 955,
+    "due_date": "2025-04-05T06:57:58.110Z",
+    "organization_logo": "https://i.postimg.cc/X7js0WHN/Seal-of-Dhaka-Water-Supply-and-Sewerage-Authority-svg.png"
+  },
+  {
+    "id": 4,
+    "bill_type": "internet",
+    "icon": "https://i.postimg.cc/L4W4KQX7/internet-icon-2048x2048-s11yrddp.png",
+    "organization": "Link3",
+    "amount": 1200,
+    "due_date": "2025-04-15T06:57:58.110Z",
+    "organization_logo": "https://i.postimg.cc/c4CfmLk3/82a5c893310219-Y3-Jvc-Cw5-OTks-Nzgy-LDAs-MTM4.jpg"
+  },
+  {
+    "id": 5,
+    "bill_type": "telephone",
+    "icon": "https://i.postimg.cc/CLjKGHhQ/7044607.png",
+    "organization": "BTCL",
+    "amount": 675,
+    "due_date": "2025-04-25T06:57:58.110Z",
+    "organization_logo": "https://i.postimg.cc/Rh2CwmZk/images-3.jpg"
+  }
+]
