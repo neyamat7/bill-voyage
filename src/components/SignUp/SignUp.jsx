@@ -83,7 +83,7 @@ const SignUp = () => {
         // });
         updateUser({ displayName: userName, photoURL: photo })
           .then(() => {
-            setUser({ ...user });
+            setUser({ ...user, displayName: userName, photoURL: photo });
           })
           .catch((error) => {
             console.log(error);
