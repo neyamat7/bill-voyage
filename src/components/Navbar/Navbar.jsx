@@ -30,10 +30,31 @@ const Navbar = () => {
         <a className="btn btn-ghost text-2xl">BillVoyage</a>
       </div>
 
-      <div className="flex gap-4">
-        <NavLink>Home</NavLink>
-        <NavLink to="/bills">Bills</NavLink>
-        <NavLink to="/profile">Profile</NavLink>
+      <div className="flex gap-4 text-lg">
+        <NavLink
+          to="/"
+          className={({ isActive }) => {
+            return isActive ? "underline text-green-500" : "";
+          }}
+        >
+          Home
+        </NavLink>
+        <NavLink
+          to="/bills"
+          className={({ isActive }) => {
+            return isActive ? "underline text-green-500" : "";
+          }}
+        >
+          Bills
+        </NavLink>
+        <NavLink
+          to="/profile"
+          className={({ isActive }) => {
+            return isActive ? "underline text-green-500" : "";
+          }}
+        >
+          Profile
+        </NavLink>
       </div>
 
       <div className="flex items-center gap-4">
