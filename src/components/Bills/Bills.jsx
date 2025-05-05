@@ -11,7 +11,16 @@ export default function ModernBillPaymentCards() {
   
 
   function handleSortBills(billType) {
-    
+    if (billType.toLowerCase() === "all") {
+      setShowBills(bills);
+      return;
+    }
+
+    const sortedBills = bills.filter(
+      (singleBill) =>
+        singleBill.bill_type.toLowerCase() === billType.toLowerCase()
+    );
+    setShowBills(sortedBills);
   }
 
   return (
