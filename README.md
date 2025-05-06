@@ -12,11 +12,21 @@ This BillVoyage website aims to help users stay on top of their finances by prov
 
 ## Key Features
 
--**Utility Bill Payments:** Users can easily pay all utility bills, including electricity, water, gas and internet. -**Expense and Income Management:** Anyone can track and categorize income and expense to maintain finacial organization. -**Real Time Tracking:** Users can track all of their bills in real time. -**Secure Payments:** People can access financial data from both web and mobile apps. -**Mobile App Support:** All transactions are protected with industry-leading encryption.
+- **Utility Bill Payments:** Users can easily pay all utility bills, including electricity, water, gas and internet.
+- **Expense and Income Management:** Anyone can track and categorize income and expense to maintain finacial organization.
+- **Real Time Tracking:** Users can track all of their bills in real time.
+- **Secure Payments:** People can access financial data from both web and mobile apps.
+- **Mobile App Support:** All transactions are protected with industry-leading encryption.
 
 ## NPM Packages Used
 
--**React** -**React Router** -**lucide React** -**React Icons** -**Swiper Js** -**React toastify** -**Firebase**s
+- **React**
+- **React Router**
+- **lucide React**
+- **React Icons**
+- **Swiper Js**
+- **React toastify**
+- **Firebase**
 
 ## 🌐 Live Link
 
