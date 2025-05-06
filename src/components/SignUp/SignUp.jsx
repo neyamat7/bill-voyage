@@ -214,7 +214,7 @@ const SignUp = () => {
             />
             <span
               onClick={() => setShowPass((prev) => !prev)}
-              className={`absolute right-0 top-9 text-2xl ${
+              className={`absolute right-1 top-9 text-2xl ${
                 focused ? "flex" : "hidden"
               }`}
             >

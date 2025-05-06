@@ -117,7 +117,9 @@ const Navbar = () => {
               {buttonLinks}
             </ul>
           </div>
-          <a className=" font-bold text-2xl sm:pl-2">BillVoyage</a>
+          <Link to="/" className=" font-bold text-2xl sm:pl-2">
+            BillVoyage
+          </Link>
         </div>
 
         <div className="hidden sm:flex gap-4 text-lg">{navLinks}</div>
