@@ -12,6 +12,7 @@ const Home = () => {
     <div>
       <Slider></Slider>
       <PartnerBank></PartnerBank>
+      <Transaction></Transaction>
       
     </div>
   );
