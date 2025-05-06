@@ -1,10 +1,11 @@
 import React from "react";
 import { Outlet } from "react-router";
+import Slider from "../Slider/Slider";
 
 const Home = () => {
   return (
-    <div>
-      <h1 className="text-5xl font-bold">Welcome To Our Website</h1>
+    <div className="h-[60vh]">
+      <Slider></Slider>
     </div>
   );
 };

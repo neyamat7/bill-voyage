@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import useAuth from "../../context/useAuth";
-import Profile from "../Profile/Profile";
 import { useNavigate } from "react-router";
 
 const UpdateProfile = () => {

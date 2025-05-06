@@ -1,0 +1,38 @@
+import React from "react";
+
+const SliderImage = ({ slogan, desc, imgUrl }) => {
+  return (
+    <section className="relative h-[60vh] w-full overflow-hidden">
+    
+      <div className="absolute inset-0">
+        <img
+          src={imgUrl}
+          alt="Bill management dashboard"
+          className="w-full h-full object-cover"
+        />
+     
+        <div className="absolute inset-0 bg-gray-900/20"></div>
+      </div>
+
+   
+      <div className="relative h-full flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8">
+     
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
+          {slogan}
+        </h1>
+
+   
+        <p className="text-xl sm:text-2xl text-white max-w-2xl mb-8">{desc}</p>
+ 
+        <button
+          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg text-lg transition duration-300"
+          onClick={() => console.log("Button clicked!")}  
+        >
+          Get Started for Free
+        </button>
+      </div>
+    </section>
+  );
+};
+
+export default SliderImage;

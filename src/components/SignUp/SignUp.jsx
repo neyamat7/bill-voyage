@@ -144,7 +144,7 @@ const SignUp = () => {
 
   return (
     <div className="max-w-md mx-auto mt-8 p-6 border border-gray-200 rounded-md shadow-md">
-      <h2 className="text-2xl font-semibold mb-4">Sign Up</h2>
+      <h2 className="text-2xl font-semibold mb-4">Register New User</h2>
       <form onSubmit={handleRegister}>
         <div className="mb-4">
           <label

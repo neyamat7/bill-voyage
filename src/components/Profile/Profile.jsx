@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { MdOutlineAttachEmail } from "react-icons/md";
 import useAuth from "../../context/useAuth";
 import { FaUserEdit } from "react-icons/fa";
 import { Link, Outlet } from "react-router";
 
 const Profile = () => {
-  const { user, setUser, updateUser } = useAuth();
+  const { user } = useAuth();
 
   const userEmail = user.email || user.providerData[0].email;
 
