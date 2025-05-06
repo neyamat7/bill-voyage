@@ -8,7 +8,6 @@ const BillCard = ({ bill }) => {
 
   return (
     <div className="relative overflow-hidden rounded-lg bg-slate-50 border-gray-700">
-      {/* Accent Line */}
       <div
         className={`absolute top-0 left-0 h-full w-1 ${
           bill.bill_type === "electricity"
@@ -25,9 +24,8 @@ const BillCard = ({ bill }) => {
         }`}
       ></div>
 
-      <div className="grid grid-cols-8 items-center p-4">
-        {/* Logo Area */}
-        <div className="col-span-2 flex justify-center">
+      <div className="grid grid-cols-1 min-[425px]:grid-cols-8 items-center p-4">
+        <div className="min-[425px]:col-span-2 flex justify-center mb-10 min-[425px]:mb-0">
           <div
             className={`flex items-center justify-center w-28 h-28 rounded-lg border border-slate-300`}
           >
@@ -37,10 +35,8 @@ const BillCard = ({ bill }) => {
           </div>
         </div>
 
-        {/* Content Area */}
-        <div className="col-span-6 pl-3">
+        <div className="min-[425px]:col-span-6 pl-3">
           <div className="grid grid-cols-6 gap-3 items-center place-content-center">
-            {/* Provider & Service Info */}
             <div className="col-span-4">
               <div className="text-xl text-black font-bold">
                 {bill.organization}
@@ -52,15 +48,14 @@ const BillCard = ({ bill }) => {
                 <Calendar className="h-3 w-3 mr-1" />
                 <span>Due: {format(date, "dd MMMM yyyy")}</span>
               </div>
-              {/* Amount */}
+
               <div className="">
-                <div className="text-lg font-bold">
+                <div className="text-lg font-bold text-gray-800">
                   ${bill.amount.toFixed(2)}
                 </div>
               </div>
             </div>
 
-            {/* Actions */}
             <div className="col-span-2 text-center flex">
               <Link
                 to={`/details/${bill.id}`}

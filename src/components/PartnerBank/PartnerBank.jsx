@@ -14,17 +14,17 @@ const organizations = [
 
 const PartnerBank = () => {
   return (
-    <div className="max-w-screen-xl mx-auto">
+    <div className="max-w-screen-xl mx-auto px-5">
       <Heading
-        title="Our Utility Partners"
-        desc="Pay all your bills easily through our integrated platform"
+        title="Our Trusted Providers"
+        desc="Manage and pay all your bills in one seamless platform"
       ></Heading>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {organizations.map((org) => (
           <div
             key={org.id}
-            className={`${org.color} p-6 rounded-lg text-center hover:shadow-md transition-all cursor-pointer flex flex-col items-center justify-center`}
+            className={`${org.color} p-6 py-12 rounded-lg text-center hover:shadow-md transition-all cursor-pointer flex flex-col items-center justify-center`}
           >
             <div className="text-4xl mb-3">{org.icon}</div>
             <h3 className="font-semibold text-gray-800">{org.name}</h3>

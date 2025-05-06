@@ -28,7 +28,7 @@ const UpdateProfile = () => {
     <div>
       <div className="w-full px-5 mt-10">
         <form onSubmit={handleProfileUpdate}>
-          {/* Display name input */}
+          
           <div className="mb-4">
             <label
               htmlFor="displayName"
@@ -45,8 +45,7 @@ const UpdateProfile = () => {
               className="shadow border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight"
             />
           </div>
-
-          {/* Photo URL input */}
+ 
           <div className="mb-4">
             <label
               htmlFor="photoURL"
@@ -63,8 +62,7 @@ const UpdateProfile = () => {
               className="shadow border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight"
             />
           </div>
-
-          {/* Save button */}
+ 
           <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"

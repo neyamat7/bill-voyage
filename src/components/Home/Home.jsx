@@ -1,5 +1,4 @@
-import React from "react";
-import { Outlet } from "react-router";
+import React from "react"; 
 import Slider from "../Slider/Slider";
 import PartnerBank from "../PartnerBank/PartnerBank";
 import AboutUs from "../AboutUs/AboutUs";

@@ -2,12 +2,12 @@ import React from "react";
 
 const SliderImage = ({ slogan, desc, imgUrl }) => {
   return (
-    <section className="relative h-[60vh] w-full overflow-hidden">
+    <section className="relative h-[80vh] w-full overflow-hidden">
       <div className="absolute inset-0">
         <img
           src={imgUrl}
           alt="Bill management dashboard"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-fill"
         />
 
         <div className="absolute inset-0 bg-gray-900/50"></div>
@@ -24,7 +24,7 @@ const SliderImage = ({ slogan, desc, imgUrl }) => {
           className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg text-lg transition duration-300"
           onClick={() => console.log("Button clicked!")}
         >
-          Get Started for Free
+          Get Started
         </button>
       </div>
     </section>

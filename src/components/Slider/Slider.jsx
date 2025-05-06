@@ -24,7 +24,7 @@ export default function Slider() {
   }, []);
 
   return (
-    <div className="h-[60vh]">
+    <div className="h-[80vh]">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

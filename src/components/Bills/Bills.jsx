@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Bolt, Flame, Calendar, ExternalLink } from "lucide-react";
+import { useState } from "react"; 
 import BillCard from "./BillCard";
 import { useLoaderData } from "react-router";
 
@@ -23,7 +22,7 @@ export default function ModernBillPaymentCards() {
 
   return (
     <div className="min-h-[calc(100vh-64px)] bg-gray-200 text-white pb-20 pt-10">
-      <div className="max-w-screen-xl mx-auto">
+      <div className="max-w-screen-xl mx-auto px-5">
         <h1 className="text-2xl font-bold mb-6 text-center text-slate-700">
           Utility Bills
         </h1>
@@ -35,7 +34,7 @@ export default function ModernBillPaymentCards() {
               setBillType(e.target.value);
               handleSortBills(e.target.value);
             }}
-            // defaultValue="Sort By Bill Type"
+         
             className="select select-accent capitalize"
           >
             <option>All</option>

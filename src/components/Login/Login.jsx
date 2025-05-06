@@ -52,8 +52,8 @@ const Login = () => {
   return (
     <div className="flex flex-col items-center justify-center bg-gray-100 min-h-[calc(100vh-409px)]">
       <div className="bg-white shadow-md my-20 py-6 rounded-md">
-        <form className="px-8 pb-8 mb-4 w-[400px]">
-          <h1 className="text-3xl text-center font-bold mb-5">Login</h1>
+        <form className="px-6 sm:px-8 pb-8 mb-4 w-[280px] min-[390px]:w-[350px] sm:w-[400px]">
+          <h1 className="text-3xl text-center font-bold mb-10">Login</h1>
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
@@ -102,7 +102,6 @@ const Login = () => {
             </div>
             <div className="flex items-center justify-end">
               <a
-                // onClick={handleForgetPassword}
                 className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
                 href="#"
               >
@@ -120,7 +119,10 @@ const Login = () => {
           </button>
           <p className="mt-3">
             Don't Have an Account?{" "}
-            <Link to="/register" className="text-blue-600 font-bold hover:underline">
+            <Link
+              to="/register"
+              className="text-blue-600 font-bold hover:underline"
+            >
               Register
             </Link>
           </p>

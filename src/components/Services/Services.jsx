@@ -15,9 +15,9 @@ const appFeatures = [
 
 const Services = () => {
   return (
-    <div className="bg-gray-500 text-white py-6 mt-20">
+    <div className="bg-gray-400 max-w-screen-xl mx-auto text-white mt-20 rounded-md border pb-12 px-5">
       <Heading
-        title="Banking On The Go"
+        title="Manage Your Bill From Anywhere"
         desc="Download our mobile app to manage your finances anytime, anywhere"
         text="text-white"
       ></Heading>
@@ -29,7 +29,7 @@ const Services = () => {
               <div className="bg-blue-500 p-1 rounded-full mr-3">
                 <CheckIcon />
               </div>
-              {feature}
+              <span className="text-xl font-medium">{feature}</span>
             </li>
           ))}
         </ul>

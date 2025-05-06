@@ -1,22 +1,6 @@
 import React from "react";
 import Heading from "../Heading/Heading";
-import {
-  ArrowRight,
-  Activity,
-  CreditCard,
-  Shield,
-  Users,
-  ChevronRight,
-  ExternalLink,
-  Phone,
-  Mail,
-  MapPin,
-  Facebook,
-  Twitter,
-  Instagram,
-  Linkedin,
-  ChevronLeft,
-} from "lucide-react";
+import { Activity, CreditCard, Shield, Users } from "lucide-react";
 
 const features = [
   {
@@ -48,10 +32,10 @@ const features = [
 const AboutUs = () => {
   return (
     <div className="max-w-screen-xl mx-auto">
-      <section className="pt-1 pb-16 mt-10 bg-gray-200">
+      <section className="pt-1 pb-16 mt-10 bg-gray-200 rounded-md">
         <div className="container mx-auto px-4">
           <Heading
-            title="Why Choose Us"
+            title="Why We Are Different"
             desc="Designed to make managing your finances easier and more secure"
           ></Heading>
 
