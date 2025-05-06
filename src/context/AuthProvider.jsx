@@ -34,13 +34,10 @@ const AuthProvider = ({ children }) => {
 
   const signOutUser = () => {
     setLoading(true);
-    console.log("signout successful");
     return signOut(auth);
   };
 
   const updateUser = async (updatedData) => {
-    console.log(updatedData);
-    console.log(user);
     if (!auth.currentUser) {
       throw new Error("No authenticated user found");
     }
@@ -56,7 +53,6 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log(currentUser);
       setLoading(false);
     });
 

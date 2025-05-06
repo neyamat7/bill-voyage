@@ -10,7 +10,7 @@ const Navbar = () => {
   const [remainingBalance, setRemainingBalance] = useState(0);
   const { user, signOutUser } = useAuth();
   const userEmail = user?.email || user?.providerData[0].email;
-  const { pathname } = useLocation();
+  const { pathname, state } = useLocation();
 
   const notify = () =>
     toast.info(
@@ -77,6 +77,7 @@ const Navbar = () => {
       </Link>
       <Link
         to="/register"
+        state={state}
         className={`btn ${pathname === "/register" ? "btn-active" : ""}`}
       >
         Register

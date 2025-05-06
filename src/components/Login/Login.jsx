@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 const Login = () => {
   const { signInUser, googleSignIn } = useAuth();
   const location = useLocation();
-
+ 
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -45,11 +45,9 @@ const Login = () => {
   function handleGoogleSignIn() {
     googleSignIn()
       .then((result) => {
-        console.log(result.user);
         navigate(location?.state || "/");
       })
       .catch((error) => {
-        console.log(error);
         setError(error?.message);
       });
   }
@@ -123,9 +121,10 @@ const Login = () => {
             Sign In
           </button>
           <p className="mt-3">
-            Don't Have an Account?{" "}
+            Don't Have an Account?
             <Link
               to="/register"
+              state={location.state}
               className="text-blue-600 font-bold hover:underline"
             >
               Register
