@@ -6,15 +6,28 @@
 
 This website lets users to manage their utility bills. A smart and secure bill management platform where users can track expenses and income, manage cards, transfer money, monitor finances in real time. Includes mobile app access and supports seamless, making it easy to stay on top of your finances anytime, anywhere, and stay organized -helping you never miss a payment again.
 
-## Technologies Used
+## Purpose
 
-- JSX
-- Tailwind css
-- JavaScript
-- React
-- Firebase
+This BillVoyage website aims to help users stay on top of their finances by providing an easy-to-use platform to pay bills, track personal finances, and manage payments securely.
+
+## Key Features
+
+**Utility Bill Payments:** Users can easily pay all utility bills, including electricity, water, gas and internet.
+**Expense and Income Management:** Anyone can track and categorize income and expense to maintain finacial organization.
+**Real Time Tracking:** Users can track all of their bills in real time.
+**Secure Payments:** People can access financial data from both web and mobile apps.
+**Mobile App Support:** All transactions are protected with industry-leading encryption.
+
+## NPM Packages Used
+
+-React
+-React Router
+-lucide React
+-React Icons
+-Swiper Js
+-React toastify
+-Firebase
 
 ## 🌐 Live Link
 
-**[BillVoyage Live Site](https://auction-bids-world-a7.netlify.app/)**
-
+**[BillVoyage Live Site](https://bill-voyage.netlify.app/)**
