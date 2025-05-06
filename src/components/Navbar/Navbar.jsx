@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from "react-router";
 import usePayment from "../../context/usePayment";
 import useAuth from "../../context/useAuth";
 import { LuDollarSign } from "react-icons/lu";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { balance, resetBalance } = usePayment();
@@ -11,11 +12,16 @@ const Navbar = () => {
   const userEmail = user?.email || user?.providerData[0].email;
   const { pathname } = useLocation();
 
+  const notify = () =>
+    toast.info(
+      "Log out complete! Come back soon to manage your bills with ease."
+    );
+
   function handleLogOut() {
     signOutUser()
       .then(() => {
-        console.log("User signed out");
         resetBalance();
+        notify();
       })
       .catch((error) => {
         console.log("Sign out error:", error);

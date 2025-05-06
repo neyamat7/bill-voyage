@@ -1,8 +1,4 @@
-import { 
-  Mail,
-  MapPin,
-  Phone, 
-} from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import React from "react";
 import { CiTwitter } from "react-icons/ci";
 import { FaInstagram } from "react-icons/fa";
@@ -13,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-800 text-gray-300 pt-12 pb-6">
       <div className="max-w-screen-xl mx-auto px-4">
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 mb-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-8">
           <div className=" flex flex-col items-center">
             <h3 className="text-2xl font-bold text-white mb-4">BillVoyage</h3>
             <p className="mb-4 max-w-[250px] text-center">

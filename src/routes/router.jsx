@@ -8,11 +8,14 @@ import PrivateRoutes from "./PrivateRoutes";
 import Profile from "../components/Profile/Profile";
 import Details from "../components/Details/Details";
 import UpdateProfile from "../components/UpdateProfile/UpdateProfile";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
+import Loading from "../components/Loading/Loading";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: Layouts,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
@@ -34,8 +37,9 @@ export const router = createBrowserRouter([
             <Bills></Bills>
           </PrivateRoutes>
         ),
+        hydrateFallbackElement: <Loading></Loading>,
       },
-       
+
       {
         path: "profile",
         element: (
@@ -54,7 +58,7 @@ export const router = createBrowserRouter([
           },
         ],
       },
-     
+
       {
         path: "details/:id",
         loader: async ({ params }) => {
@@ -68,6 +72,7 @@ export const router = createBrowserRouter([
             <Details></Details>
           </PrivateRoutes>
         ),
+        hydrateFallbackElement: <Loading></Loading>,
       },
     ],
   },

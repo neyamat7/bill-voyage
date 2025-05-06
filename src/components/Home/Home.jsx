@@ -1,4 +1,4 @@
-import React from "react"; 
+import React from "react";
 import Slider from "../Slider/Slider";
 import PartnerBank from "../PartnerBank/PartnerBank";
 import AboutUs from "../AboutUs/AboutUs";
@@ -9,6 +9,7 @@ import Testimonial from "../Testimonial/Testimonial";
 const Home = () => {
   return (
     <div>
+   
       <Slider></Slider>
       <PartnerBank></PartnerBank>
       <Transaction></Transaction>

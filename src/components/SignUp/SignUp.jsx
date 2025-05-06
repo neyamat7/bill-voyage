@@ -4,6 +4,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import useAuth from "../../context/useAuth";
 import { MdOutlineErrorOutline } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -21,6 +22,11 @@ const SignUp = () => {
   const [passwordError, setPasswordError] = useState(" ");
   const [emailError, setEmailError] = useState("");
   const [photoError, setPhotoError] = useState("");
+
+  const notify = () =>
+    toast.success(
+      "Your registration is complete. Welcome to seamless bill payments!"
+    );
 
   const { createUser, setUser, updateUser, googleSignIn } = useAuth();
 
@@ -132,8 +138,7 @@ const SignUp = () => {
             console.log(error);
             console.log("error profile update");
           });
-
-        navigate("/login");
+        notify();
         navigate(location?.state || "/");
       })
       .catch((err) => {

@@ -1,5 +1,6 @@
 import { Navigate, useLocation } from "react-router";
 import useAuth from "../context/useAuth";
+import Loading from "../components/Loading/Loading";
 
 const PrivateRoutes = ({ children }) => {
   const { user, loading } = useAuth();
@@ -7,11 +8,7 @@ const PrivateRoutes = ({ children }) => {
   const location = useLocation();
 
   if (loading) {
-    return (
-      <div className="flex justify-center mt-10 min-h-[calc(100vh-409px)]">
-        <span className="loading loading-infinity loading-xl"></span>
-      </div>
-    );
+    return <Loading></Loading>;
   }
 
   if (!user) {

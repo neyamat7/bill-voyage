@@ -3,6 +3,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../../context/useAuth";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const { signInUser, googleSignIn } = useAuth();
@@ -15,6 +16,9 @@ const Login = () => {
   const [error, setError] = useState("");
 
   const [focused, setFocused] = useState(false);
+
+  const notify = () =>
+    toast.success("Your have successfully logged into your account!");
 
   function handleFocus(e) {
     if (e.target.value.length > 0) {
@@ -29,6 +33,7 @@ const Login = () => {
       .then((res) => {
         console.log(res.user);
         console.log("successfully logged in");
+        notify();
         navigate(location?.state || "/");
       })
       .catch((err) => {
