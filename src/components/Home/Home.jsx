@@ -14,7 +14,7 @@ const Home = () => {
       <PartnerBank></PartnerBank>
       <Transaction></Transaction>
       <Services></Services>
-      
+      <AboutUs></AboutUs>
     </div>
   );
 };
