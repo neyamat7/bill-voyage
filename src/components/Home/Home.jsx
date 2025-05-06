@@ -13,6 +13,7 @@ const Home = () => {
       <Slider></Slider>
       <PartnerBank></PartnerBank>
       <Transaction></Transaction>
+      <Services></Services>
       
     </div>
   );
