@@ -10,7 +10,7 @@ const Profile = () => {
   const userEmail = user.email || user.providerData[0].email;
 
   return (
-    <div className="flex justify-center items-center min-h-[calc(100vh-80px)] bg-gray-100">
+    <div className="flex justify-center items-center min-h-[calc(100vh-300px)]  bg-gray-100">
       <div className="relative w-md p-14 rounded-2xl bg-gray-100 shadow-lg hover:shadow-xl flex flex-col items-center transition-all duration-300 ease-in-out transform hover:-translate-y-1">
         {/* Decorative elements */}
         <div className="absolute w-20 h-20 bg-white opacity-10 rounded-full -top-8 -left-8 blur-lg"></div>

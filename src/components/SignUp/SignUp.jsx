@@ -143,139 +143,144 @@ const SignUp = () => {
   }
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-6 border border-gray-200 rounded-md shadow-md">
-      <h2 className="text-2xl font-semibold mb-4">Register New User</h2>
-      <form onSubmit={handleRegister}>
-        <div className="mb-4">
-          <label
-            htmlFor="name"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Name:
-          </label>
-          <input
-            name="name"
-            type="text"
-            id="name"
-            value={userName}
-            onChange={(e) => {
-              setUserName(e.target.value);
-              e.target.value.length > 0 && setNameError("");
-            }}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight "
-          />
-          <p className="mt-0.5">{nameError}</p>
-        </div>
+    <div className="min-h-[calc(100vh-409px)]">
+      <div className="max-w-md mx-auto my-8 p-6  border border-gray-200 rounded-md shadow-md bg-gray-50">
+        <h2 className="text-2xl font-semibold mb-6">Register Now</h2>
+        <form onSubmit={handleRegister}>
+          <div className="mb-4">
+            <label
+              htmlFor="name"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Name:
+            </label>
+            <input
+              name="name"
+              type="text"
+              id="name"
+              value={userName}
+              onChange={(e) => {
+                setUserName(e.target.value);
+                e.target.value.length > 0 && setNameError("");
+              }}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight "
+            />
+            <p className="mt-0.5">{nameError}</p>
+          </div>
 
-        <div className="mb-4">
-          <label
-            htmlFor="email"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Email:
-          </label>
-          <input
-            name="email"
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              e.target.value.length > 0 && setEmailError("");
-            }}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"
-          />
-          <p className="mt-0.5">{emailError}</p>
-        </div>
-        <div className="mb-4 relative">
-          <label
-            htmlFor="password"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Password:
-          </label>
-          <input
-            name="password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-              handleFocus(e);
-              setPasswordError("");
-            }}
-            type={showPass ? "text" : "password"}
-            id="password"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight  "
-          />
-          <span
-            onClick={() => setShowPass((prev) => !prev)}
-            className={`absolute right-0 top-9 text-2xl ${
-              focused ? "flex" : "hidden"
-            }`}
-          >
-            {showPass ? <FaEyeSlash /> : <FaEye />}
-          </span>
+          <div className="mb-4">
+            <label
+              htmlFor="email"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Email:
+            </label>
+            <input
+              name="email"
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                e.target.value.length > 0 && setEmailError("");
+              }}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"
+            />
+            <p className="mt-0.5">{emailError}</p>
+          </div>
+          <div className="mb-4 relative">
+            <label
+              htmlFor="password"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Password:
+            </label>
+            <input
+              name="password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                handleFocus(e);
+                setPasswordError("");
+              }}
+              type={showPass ? "text" : "password"}
+              id="password"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight  "
+            />
+            <span
+              onClick={() => setShowPass((prev) => !prev)}
+              className={`absolute right-0 top-9 text-2xl ${
+                focused ? "flex" : "hidden"
+              }`}
+            >
+              {showPass ? <FaEyeSlash /> : <FaEye />}
+            </span>
 
-          <p className="mt-0.5">{passwordError}</p>
-        </div>
+            <p className="mt-0.5">{passwordError}</p>
+          </div>
 
-        <div className="mb-4">
-          <label
-            htmlFor="photo"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Photo URL
-          </label>
-          <input
-            name="photo"
-            type="text"
-            id="photo"
-            value={photoUrl}
-            onChange={(e) => {
-              setPhotoUrl(e.target.value);
-              setPhotoError("");
-            }}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"
-          />
-          <p className="mt-0.5">{photoError}</p>
-        </div>
-        <div className="flex items-center mb-4">
-          <input
-            name="terms"
-            type="checkbox"
-            id="terms"
-            className="mr-2 leading-tight"
-            onChange={(e) => {
-              e.target.checked && setError("");
-            }}
-          />
-          <label htmlFor="terms" className="text-sm text-gray-700">
-            Accept terms and conditions
-          </label>
-        </div>
-        <p className="text-red-500 font-semibold mb-2">{error}</p>
+          <div className="mb-4">
+            <label
+              htmlFor="photo"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Photo URL
+            </label>
+            <input
+              name="photo"
+              type="text"
+              id="photo"
+              value={photoUrl}
+              onChange={(e) => {
+                setPhotoUrl(e.target.value);
+                setPhotoError("");
+              }}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"
+            />
+            <p className="mt-0.5">{photoError}</p>
+          </div>
+          <div className="flex items-center mb-4">
+            <input
+              name="terms"
+              type="checkbox"
+              id="terms"
+              className="mr-2 leading-tight"
+              onChange={(e) => {
+                e.target.checked && setError("");
+              }}
+            />
+            <label htmlFor="terms" className="text-sm text-gray-700">
+              Accept terms and conditions
+            </label>
+          </div>
+          <p className="text-red-500 font-semibold mb-2">{error}</p>
 
-        <div
-          className="flex gap-3
+          <div
+            className="flex flex-col gap-3
         "
-        >
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-            Register
-          </button>
+          >
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              Register
+            </button>
 
-          <button>
-            Already Have an Account?
-            <Link className="text-blue-600 font-bold" to="/login">
-              Login
-            </Link>
-          </button>
-        </div>
-      </form>
-      <button
-        onClick={handleGoogleSignIn}
-        className="bg-slate-400 hover:bg-red-700 text-white font-bold py-2 px-4 rounded  flex items-center gap-2 w-fit mx-auto mt-10"
-      >
-        <FcGoogle size={24} /> Sign in with Google
-      </button>
+            <button>
+              <span>Already Have an Account? </span>
+              <Link
+                className="text-blue-600 font-bold hover:underline"
+                to="/login"
+              >
+                Login
+              </Link>
+            </button>
+          </div>
+        </form>
+        <button
+          onClick={handleGoogleSignIn}
+          className="bg-white hover:bg-gray-200 text-slate-600 border border-gray-300 font-bold py-2 px-4 rounded  flex items-center gap-2 w-fit mx-auto mt-7"
+        >
+          <FcGoogle size={24} /> Sign in with Google
+        </button>
+      </div>
     </div>
   );
 };

@@ -31,16 +31,16 @@ export default function Details() {
   }
 
   return (
-    <div className="max-w-full h-[calc(100vh-64px)] mx-auto p-6 bg-gray-100 pt-20">
+    <div className="max-w-full h-[calc(100vh-64px)] mx-auto p-6 bg-white pt-20">
       {/* Main Card with Neomorphic Effect */}
-      <div className="flex flex-col gap-8 md:flex-row rounded-xl overflow-hidden bg-gray-100 shadow-xl p-4">
+      <div className="max-w-screen-lg mx-auto flex flex-col gap-8 md:flex-row rounded-xl overflow-hidden bg-gray-100 shadow-md p-4">
         {/* Left Column - Logo */}
         <div className="w-full md:w-1/2  flex items-center justify-center relative bg-white">
           {/* NESCO Logo with Neomorphic Inset */}
           <div className="flex items-center justify-center h-full bg-white">
             <div className="flex items-center relative h-full bg-white">
               <img
-                className="w-full h-full bg-white object-cover"
+                className="w-full h-[300px] bg-white object-cover"
                 src={bill.organization_logo}
                 alt=""
               />
@@ -102,7 +102,7 @@ export default function Details() {
           {/* Pay Bill Button with Neomorphic Raised Effect */}
           <button
             onClick={() => handlePayItem(bill.id, bill.amount)}
-            className="w-full py-3 rounded-lg font-medium text-white text-lg bg-green-500 shadow-md hover:shadow-lg active:shadow-inner transition-shadow duration-300"
+            className="w-fit py-3 px-6 rounded-lg font-medium text-white text-lg bg-green-500 shadow-md hover:shadow-lg active:shadow-inner transition-shadow duration-300"
           >
             {isPaid() ? (
               <span className="flex items-center gap-2 text-center justify-center">
@@ -110,7 +110,7 @@ export default function Details() {
                 <ImCheckboxChecked />
               </span>
             ) : (
-              "Pay"
+              "Pay Bill"
             )}
           </button>
         </div>

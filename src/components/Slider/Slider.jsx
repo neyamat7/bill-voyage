@@ -24,29 +24,31 @@ export default function Slider() {
   }, []);
 
   return (
-    <Swiper
-      spaceBetween={30}
-      centeredSlides={true}
-      autoplay={{
-        delay: 2500,
-        disableOnInteraction: false,
-      }}
-      pagination={{
-        clickable: true,
-      }}
-      navigation={true}
-      modules={[Autoplay, Pagination, Navigation]}
-      className="mySwiper"
-    >
-      {sliderData.map((slide) => (
-        <SwiperSlide key={slide.slogan}>
-          <SliderImage
-            slogan={slide.slogan}
-            desc={slide.description}
-            imgUrl={slide.imgUrl}
-          />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <div className="h-[60vh]">
+      <Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper"
+      >
+        {sliderData.map((slide) => (
+          <SwiperSlide key={slide.slogan}>
+            <SliderImage
+              slogan={slide.slogan}
+              desc={slide.description}
+              imgUrl={slide.imgUrl}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 }

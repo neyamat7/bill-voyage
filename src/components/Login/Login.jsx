@@ -50,95 +50,90 @@ const Login = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-100 h-screen">
-      <form className="bg-white shadow-md px-8 pt-6 pb-8 mb-4 w-[400px] rounded-lg">
-        <h1 className="text-3xl text-center font-bold mb-5">Login</h1>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="username"
-          >
-            Email
-          </label>
-          <input
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            name="email"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="username"
-            type="email"
-            placeholder="Username"
-          />
-        </div>
-        <div className="mb-6">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="password"
-          >
-            Password
-          </label>
-          <div className="relative">
+    <div className="flex flex-col items-center justify-center bg-gray-100 min-h-[calc(100vh-409px)]">
+      <div className="bg-white shadow-md my-20 py-6 rounded-md">
+        <form className="px-8 pb-8 mb-4 w-[400px]">
+          <h1 className="text-3xl text-center font-bold mb-5">Login</h1>
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="username"
+            >
+              Email
+            </label>
             <input
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-                handleFocus(e);
-              }}
-              name="password"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-              id="password"
-              type={showPass ? "text" : "password"}
-              placeholder="Password"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              name="email"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"
+              id="username"
+              type="email"
+              placeholder="Username"
             />
-            <span
-              onClick={() => setShowPass((prev) => !prev)}
-              className={`absolute right-1 top-2 text-2xl ${
-                focused ? "flex" : "hidden"
-              }`}
-            >
-              {showPass ? <FaEyeSlash /> : <FaEye />}
-            </span>
           </div>
-          <div className="flex items-center justify-end">
-            <a
-              // onClick={handleForgetPassword}
-              className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-              href="#"
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="password"
             >
-              Forgot Password?
-            </a>
+              Password
+            </label>
+            <div className="relative">
+              <input
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  handleFocus(e);
+                }}
+                name="password"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight"
+                id="password"
+                type={showPass ? "text" : "password"}
+                placeholder="Password"
+              />
+              <span
+                onClick={() => setShowPass((prev) => !prev)}
+                className={`absolute right-1 top-2 text-2xl ${
+                  focused ? "flex" : "hidden"
+                }`}
+              >
+                {showPass ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
+            <div className="flex items-center justify-end">
+              <a
+                // onClick={handleForgetPassword}
+                className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                href="#"
+              >
+                Forgot Password?
+              </a>
+            </div>
           </div>
+          <p className="text-red-500 font-semibold mb-2">{error}</p>
+          <button
+            onClick={handleSignInWithPassword}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            type="button"
+          >
+            Sign In
+          </button>
+          <p className="mt-3">
+            Don't Have an Account?{" "}
+            <Link to="/register" className="text-blue-600 font-bold hover:underline">
+              Register
+            </Link>
+          </p>
+        </form>
+
+        <div>
+          <button
+            onClick={handleGoogleSignIn}
+            className="bg-white hover:bg-gray-200 text-slate-600 border border-gray-300 font-bold py-2 px-4 rounded  flex items-center gap-2 w-fit mx-auto mt-0"
+          >
+            <FcGoogle size={24} /> Sign in with Google
+          </button>
         </div>
-        <p className="text-red-500 font-semibold mb-2">{error}</p>
-        <button
-          onClick={handleSignInWithPassword}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="button"
-        >
-          Sign In
-        </button>
-        <p className="mt-3">
-          Don't Have an Account?{" "}
-          <Link to="/register" className="text-blue-600 font-bold">
-            Register
-          </Link>
-        </p>
-      </form>
-
-      <div>
-        <button
-          onClick={handleGoogleSignIn}
-          className="bg-slate-400 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full flex items-center gap-2"
-        >
-          <FcGoogle size={24} /> Sign in with Google
-        </button>
-
-        {/* <button
-          onClick={handleGithubLogin}
-          className="bg-gray-500 mt-5 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
-        >
-          Sign in with Github
-        </button> */}
       </div>
     </div>
   );
