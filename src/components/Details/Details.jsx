@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import { format, parseISO } from "date-fns";
 import usePayment from "../../context/usePayment";
@@ -11,9 +11,14 @@ export default function Details() {
   const { setPaidItem, getPaidItem } = usePayment();
   const navigate = useNavigate();
 
-  const notify = () => toast.success("Bill paid! Thanks for using us.");
+  const [selectedCard, setSelectedCard] = useState("");
+
+  const notify = (card) =>
+    toast.success(`Bill paid by ${card}! Thanks for using us.`);
 
   const paidAlert = () => toast.error("Paid Before! You'are up to date.");
+
+  const cardAlert = () => toast.error("Please select a card to pay!");
 
   function isPaid() {
     if (getPaidItem().includes(bill.id)) {
@@ -30,8 +35,14 @@ export default function Details() {
       paidAlert();
       return;
     }
+
+    if (!selectedCard) {
+      cardAlert();
+      return;
+    }
+
     setPaidItem(id, paidBill);
-    notify();
+    notify(selectedCard);
     navigate("/bills");
   }
 
@@ -83,6 +94,22 @@ export default function Details() {
                 {format(date, "dd MMMM yyyy")}
               </span>
             </div>
+          </div>
+
+          <div>
+            <label className="block mb-2 font-medium">Select Bank Card:</label>
+            <select
+              value={selectedCard}
+              onChange={(e) => setSelectedCard(e.target.value)}
+              className="w-fit border border-gray-400 px-3 py-2 rounded mb-4"
+            >
+              <option value="">-- Choose a card --</option>
+              <option value="Visa">Visa</option>
+              <option value="MasterCard">MasterCard</option>
+              <option value="Amex">Amex</option>
+              <option value="Nexus">Nexus</option>
+              <option value="Bkash">Bkash</option>
+            </select>
           </div>
 
           <button
