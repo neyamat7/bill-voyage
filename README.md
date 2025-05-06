@@ -1,12 +1,20 @@
-# React + Vite
+# BillVoyage
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![User's Dashboard with bills overview](https://i.postimg.cc/XYc6Pn2K/Screenshot-2025-05-06-233854.png)
 
-Currently, two official plugins are available:
+## 📝 Short Description of the Project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This website lets users to manage their utility bills. A smart and secure bill management platform where users can track expenses and income, manage cards, transfer money, monitor finances in real time. Includes mobile app access and supports seamless, making it easy to stay on top of your finances anytime, anywhere, and stay organized -helping you never miss a payment again.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- JSX
+- Tailwind css
+- JavaScript
+- React
+- Firebase
+
+## 🌐 Live Link
+
+**[BillVoyage Live Site](https://auction-bids-world-a7.netlify.app/)**
+
