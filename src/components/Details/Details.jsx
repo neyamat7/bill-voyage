@@ -16,7 +16,7 @@ export default function Details() {
   const notify = (card) =>
     toast.success(`Bill paid by ${card}! Thanks for using us.`);
 
-  const paidAlert = () => toast.error("Paid Before! You'are up to date.");
+  const paidAlert = () => toast.error("Already Paid! You'are up to date.");
 
   const cardAlert = () => toast.error("Please select a card to pay!");
 

@@ -2,7 +2,6 @@ import { useState } from "react";
 import {
   ArrowUpRight,
   ArrowDownLeft,
- 
   Calendar,
   Filter,
   ArrowRight,
@@ -21,17 +20,24 @@ export default function Transaction() {
       company: "ABC Corporation",
       amount: 2600.0,
       date: "Feb 1, 2025",
-      category: "Income",
       icon: <ArrowDownLeft className="text-emerald-500" />,
     },
     {
       id: 2,
       type: "expense",
+      title: "Credit Card Bill",
+      company: "Dutch Bangla Bank",
+      amount: 500,
+      date: "Dec 30, 2025",
+      icon: <ArrowUpRight className="text-rose-500" />,
+    },
+    {
+      id: 3,
+      type: "expense",
       title: "Electricity Bill",
       company: "DESCO",
       amount: 225.75,
       date: "Apr 22, 2024",
-      category: "Utilities",
       icon: <ArrowUpRight className="text-rose-500" />,
     },
 
@@ -42,17 +48,15 @@ export default function Transaction() {
       company: "Peer-to-Peer",
       amount: 450.0,
       date: "May 15, 2022",
-      category: "Transfer",
       icon: <ArrowDownLeft className="text-emerald-500" />,
     },
     {
-      id: 3,
+      id: 5,
       type: "expense",
       title: "Internet Bill",
       company: "Link3",
       amount: 117.35,
       date: "June 30, 2024",
-      category: "Food",
       icon: <ArrowUpRight className="text-rose-500" />,
     },
   ];
@@ -83,7 +87,7 @@ export default function Transaction() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         <div className="bg-white p-4 rounded-xl shadow">
           <p className="text-sm text-gray-500 mb-1">Total Balance</p>
-          <p className="text-2xl font-bold text-gray-800">${balance}</p>
+          <p className="text-2xl font-bold text-gray-800">${balance || 5000}</p>
           <div className="flex items-center mt-2">
             <span className="text-xs text-emerald-500 bg-emerald-50 px-2 py-1 rounded-full">
               +2.4%
@@ -92,14 +96,14 @@ export default function Transaction() {
         </div>
         <div className="bg-white p-4 rounded-xl shadow">
           <p className="text-sm text-gray-500 mb-1">Income</p>
-          <p className="text-2xl font-bold text-emerald-500">$3,700.00</p>
+          <p className="text-2xl font-bold text-emerald-500">$4,600.00</p>
           <div className="flex items-center mt-2">
             <span className="text-xs text-gray-500">This month</span>
           </div>
         </div>
         <div className="bg-white p-4 rounded-xl shadow">
           <p className="text-sm text-gray-500 mb-1">Expenses</p>
-          <p className="text-2xl font-bold text-rose-500">$212.98</p>
+          <p className="text-2xl font-bold text-rose-500">$342.00</p>
           <div className="flex items-center mt-2">
             <span className="text-xs text-gray-500">This month</span>
           </div>

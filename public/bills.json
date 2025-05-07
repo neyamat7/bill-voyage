@@ -43,5 +43,23 @@
     "amount": 675,
     "due_date": "2025-04-25T06:57:58.110Z",
     "organization_logo": "https://i.postimg.cc/Rh2CwmZk/images-3.jpg"
+  },
+  {
+    "id": 6,
+    "bill_type": "credit_card",
+    "icon": "https://i.postimg.cc/Dz1BH23P/credit-cards-icon.png",
+    "organization": "Dutch Bangla Bank",
+    "amount": 5675,
+    "due_date": "2025-05-22T14:30:00.000Z",
+    "organization_logo": "https://i.postimg.cc/kXn3yp8H/images-4.jpg"
+  },
+  {
+    "id": 7,
+    "bill_type": "tuition_fee",
+    "icon": "https://i.postimg.cc/NfW8cW4J/11905744.png",
+    "organization": "Dhaka City College",
+    "amount": 500,
+    "due_date": "2025-05-10T10:00:00.000Z",
+    "organization_logo": "https://i.postimg.cc/nV3T6Rgg/Dhaka-City-College-Seal-svg.png"
   }
 ]

@@ -71,14 +71,18 @@ const Navbar = () => {
     <>
       <Link
         to="/login"
-        className={`btn ${pathname === "/login" ? "btn-active" : ""}`}
+        className={`btn ${pathname === "/login" ? "btn-active" : ""} ${
+          user ? "hidden" : "flex"
+        }`}
       >
         Login
       </Link>
       <Link
         to="/register"
         state={state}
-        className={`btn ${pathname === "/register" ? "btn-active" : ""}`}
+        className={`btn ${pathname === "/register" ? "btn-active" : ""} ${
+          user ? "hidden" : "flex"
+        }`}
       >
         Register
       </Link>
@@ -144,7 +148,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-fit p-2 shadow"
               >
                 <li>
                   <div className="flex flex-col items-start gap-0">

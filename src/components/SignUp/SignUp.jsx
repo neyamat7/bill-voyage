@@ -1,15 +1,16 @@
 import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import useAuth from "../../context/useAuth";
 import { MdOutlineErrorOutline } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
+import usePayment from "../../context/usePayment";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const location = useLocation();
- 
+  const { resetBalance } = usePayment();
+
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,9 +35,9 @@ const SignUp = () => {
   function handleGoogleSignIn() {
     googleSignIn()
       .then((result) => {
-        console.log(result.user);
-
-        navigate(location?.state || "/");
+        resetBalance();
+        notify();
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
@@ -139,8 +140,9 @@ const SignUp = () => {
             console.log(error);
             console.log("error profile update");
           });
+        resetBalance();
         notify();
-        navigate(location?.state || "/");
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
@@ -170,6 +172,7 @@ const SignUp = () => {
                 e.target.value.length > 0 && setNameError("");
               }}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight "
+              placeholder="Your Name"
             />
             <p className="mt-0.5">{nameError}</p>
           </div>
@@ -191,6 +194,7 @@ const SignUp = () => {
                 e.target.value.length > 0 && setEmailError("");
               }}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"
+              placeholder="Your Email"
             />
             <p className="mt-0.5">{emailError}</p>
           </div>
@@ -211,7 +215,8 @@ const SignUp = () => {
               }}
               type={showPass ? "text" : "password"}
               id="password"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight  "
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"
+              placeholder="Password"
             />
             <span
               onClick={() => setShowPass((prev) => !prev)}
@@ -242,6 +247,7 @@ const SignUp = () => {
                 setPhotoError("");
               }}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"
+              placeholder="Your Photo Url"
             />
             <p className="mt-0.5">{photoError}</p>
           </div>
@@ -265,7 +271,10 @@ const SignUp = () => {
             className="flex flex-col gap-3
         "
           >
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
               Register
             </button>
 

@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../../context/useAuth";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
+import usePayment from "../../context/usePayment";
 
 const Login = () => {
-  const { signInUser, googleSignIn } = useAuth();
+  const { signInUser, googleSignIn, setLoading } = useAuth();
   const location = useLocation();
- 
+  const { resetBalance } = usePayment();
+
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,16 +30,18 @@ const Login = () => {
     }
   }
 
-  function handleSignInWithPassword() {
+  function handleSignInWithPassword(e) {
+    e.preventDefault();
+
     signInUser(email, password)
       .then((res) => {
-        console.log(res.user);
-        console.log("successfully logged in");
+        resetBalance();
         notify();
         navigate(location?.state || "/");
       })
       .catch((err) => {
         console.log(err.message);
+        setLoading(false);
         setError(err?.message);
       });
   }
@@ -45,6 +49,8 @@ const Login = () => {
   function handleGoogleSignIn() {
     googleSignIn()
       .then((result) => {
+        resetBalance();
+        notify();
         navigate(location?.state || "/");
       })
       .catch((error) => {
@@ -60,18 +66,19 @@ const Login = () => {
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="username"
+              htmlFor="email"
             >
               Email
             </label>
             <input
+              name="email"
+              type="email"
+              id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              name="email"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"
-              id="username"
-              type="email"
-              placeholder="Username"
+              placeholder="Your Email"
+              required
             />
           </div>
           <div className="mb-4">
@@ -93,6 +100,7 @@ const Login = () => {
                 id="password"
                 type={showPass ? "text" : "password"}
                 placeholder="Password"
+                required
               />
               <span
                 onClick={() => setShowPass((prev) => !prev)}
@@ -116,7 +124,7 @@ const Login = () => {
           <button
             onClick={handleSignInWithPassword}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            type="button"
+            type="submit"
           >
             Sign In
           </button>
@@ -124,7 +132,6 @@ const Login = () => {
             Don't Have an Account?
             <Link
               to="/register"
-              state={location.state}
               className="text-blue-600 font-bold hover:underline"
             >
               Register
