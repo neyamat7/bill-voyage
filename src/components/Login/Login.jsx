@@ -112,12 +112,12 @@ const Login = () => {
               </span>
             </div>
             <div className="flex items-center justify-end">
-              <a
+              <Link
+                to="/forget-password"
                 className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-                href="#"
               >
                 Forgot Password?
-              </a>
+              </Link>
             </div>
           </div>
           <p className="text-red-500 font-semibold mb-2">{error}</p>

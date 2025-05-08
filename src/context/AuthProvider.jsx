@@ -2,6 +2,7 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -37,6 +38,10 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  const resetPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  };
+
   const updateUser = async (updatedData) => {
     if (!auth.currentUser) {
       throw new Error("No authenticated user found");
@@ -69,6 +74,7 @@ const AuthProvider = ({ children }) => {
     setLoading,
     googleSignIn,
     updateUser,
+    resetPassword,
   };
 
   return (

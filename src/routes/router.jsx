@@ -10,6 +10,7 @@ import Details from "../components/Details/Details";
 import UpdateProfile from "../components/UpdateProfile/UpdateProfile";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import Loading from "../components/Loading/Loading";
+import ForgetPassword from "../components/ForgetPassword/ForgetPassword";
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: "register",
         Component: SignUp,
+      },
+      {
+        path: "forget-password",
+        Component: ForgetPassword,
       },
       {
         path: "bills",
