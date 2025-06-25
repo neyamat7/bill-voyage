@@ -43,8 +43,8 @@ Before running this project, make sure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone <https://github.com/neyamat7/bill-voyage.git>
-cd <bill-boyage>
+git clone https://github.com/neyamat7/bill-voyage.git
+cd bill-boyage
 ```
 
 ### 2. Install Dependencies
