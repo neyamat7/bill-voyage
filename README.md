@@ -28,6 +28,59 @@ This BillVoyage website aims to help users stay on top of their finances by prov
 - **React toastify**
 - **Firebase**
 
+# Getting Started
+
+## Prerequisites
+
+Before running this project, make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (version 14 or higher)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [Git](https://git-scm.com/)
+
+## Installation & Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone <https://github.com/neyamat7/bill-voyage.git>
+cd <bill-boyage>
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+## Running the Project
+
+### Development Mode
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The application will run on `http://localhost:5173` (default Vite port)
+
+### Production Build
+
+Build the project for production:
+
+```bash
+npm run build
+
+```
+
+## Available Scripts
+
+- `npm run dev` - Start development server with hot reload
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint (if configured)
+
 ## 🌐 Live Link
 
 **[BillVoyage Live Site](https://bill-voyage.netlify.app/)**
